@@ -1,0 +1,11 @@
+{
+    "author_name": "Your name!",
+    "author_email": "your_email@example.com",
+    "project_name": "MyProjectName",
+    "package_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "base_python_path": "python",
+    "python_docker_image": "python:3.7-slim-stretch",
+    "project_short_description": "Here your amazing description",
+    "version": "0.1.0",
+    "publish_in": ["Private PyPI", "ACR"]
+  }
