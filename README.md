@@ -109,7 +109,7 @@ tox -e lint
 
 ```
 
-> :warning: **The virtual environment mus be created** with ``tox -e venv`` to use other commands, otherwise could be unexpected behavior!
+> :warning: **The virtual environment must be created** with ``tox -e venv`` to use other commands, otherwise could be unexpected behavior!
 
 
 ## Logging
@@ -141,6 +141,23 @@ logger.info("This is an exmaple log", example_kwargs = "this is an example kwarg
 ```
 
 Other levels are ``logger.warning``, ``logger.debug`` and ``logger.error``.
+
+
+## Custom Exceptions
+
+There is a file ``exc.py`` with a custom exception class that the classes that inherit from this, allows them to create an error message that takes the kwargs and renders them inside the message
+
+```python
+# my_package.exc.py
+
+class ExampleError(ErrorMixin, NameError):
+    """Raise this when a table name has not been found."""
+
+    msg_template = "This is an example class error, every `{variable}` inside the brackets, will be part of the instantiation of the class and will be render in this message."
+
+
+
+```
 
 
 
