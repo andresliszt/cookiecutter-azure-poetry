@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "cookiecutter-poetry-azure"
+version = "0.1.0"
+description = "Base template for projects using poetry with CI in Azure"
+authors = ["andres <andres.sandovalabarca@cencosud.cl>"]
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.10"
+cookiecutter = "^1.7.3"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.1.1"
+pytest-cookies = "^0.6.1"
+
+
+[tool.black]
+line-length = 79
+
+[build-system]
+requires = [
+    "setuptools>=42",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
