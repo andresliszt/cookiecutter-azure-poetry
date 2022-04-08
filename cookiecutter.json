@@ -7,5 +7,7 @@
     "python_docker_image": "python:3.7-slim-stretch",
     "project_short_description": "Here your amazing description",
     "version": "0.1.0",
+    "add_sphinx": ["yes", "no"],
+    "use_tox": ["yes", "no"],
     "publish_in": ["Private PyPI", "ACR"]
   }
