@@ -18,17 +18,16 @@ def init_dotenv():
 
     Sets the location for a dotenv file containig envvars loads its
     contents.
-    Raises:
-        FileNotFoundError: When the selected location does not
-        correspond to a file.
+
     Returns:
         Location of the dotenv file.
+
     """
 
     candidate = find_dotenv(usecwd=True)
 
     if not candidate:
-        # raise IOError(f"Can't find .env file")
+        print(".env file not found, env vars must be seted manually")
         return
 
     load_dotenv(candidate)

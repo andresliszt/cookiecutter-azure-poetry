@@ -17,6 +17,7 @@ class ErrorMixin(abc.ABC, BaseException):
         >>> raise MyError(value="can't touch this")
         (...)
         MyError: Value `can't touch this` could not be found
+
     """
 
     @property
@@ -25,6 +26,7 @@ class ErrorMixin(abc.ABC, BaseException):
         """Un template para imprimir cuando una excepción es levantada.
         Example:
             "Value ``{value}`` is not found "
+
         """
 
     def __init__(self, **ctx: Any) -> None:
@@ -47,6 +49,7 @@ def change_exception(
     """Context Manager para remplazar excepciones por propias.
     See also:
         :func:`pydantic.utils.change_exception`
+
     """
     try:
         yield
