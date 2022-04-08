@@ -5,7 +5,6 @@ import re
 
 MODULE_REGEX = re.compile(r"^[_a-zA-Z-][_a-zA-Z0-9-]+$")
 
-
 DOCKER_IMAGE_REGEX = re.compile(r"python:3.\d+")
 
 PACKAGE_NAME = "{{ cookiecutter.package_name }}"
