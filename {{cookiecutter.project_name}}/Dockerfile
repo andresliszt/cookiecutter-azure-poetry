@@ -14,11 +14,9 @@ RUN pip install pytest && pytest -s -vvv
 {%- if cookiecutter.publish_in == 'Private PyPI'%}
 # Publish Image
 FROM base as publisher
-ARG PYPIRC_PATH
 ARG ARTIFACT_FEED
-COPY setup.py ./
-ADD ${PYPIRC_PATH} ./PYPIRC 
+ADD PYPIRC / 
 RUN pip install wheel twine \
-    && python setup.py bdist_wheel \
-    && python -m twine upload -r ${ARTIFACT_FEED} --config-file ./PYPIRC dist/*.whl
+    && poetry build \
+    && python -m twine upload --verbose -r ${ARTIFACT_FEED} --config-file /PYPIRC dist/*.whl
 {%- endif %}

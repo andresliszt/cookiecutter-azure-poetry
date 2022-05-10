@@ -16,11 +16,8 @@ jobs:
   - job: testing
     displayName: Install dependencies and Run Tests
     steps:
-      - task: Docker@1
-        inputs:
-          dockerFile: Dockerfile
-          imageName: {{cookiecutter.package_name}}
-          arguments: --target tester
+      - bash: DOCKER_BUILDKIT=1 docker build --target tester .
+        displayName: Test inside Docker
 
   {%- if cookiecutter.publish_in == "Private PyPI"%}
   - job: publish_wheel
@@ -39,11 +36,12 @@ jobs:
         inputs:
           artifactFeed: $(ARTIFACT_FEED)
 
-      - task: Docker@1
-        inputs:
-          dockerFile: Dockerfile
-          imageName: {{cookiecutter.package_name}}
-          arguments: --build-arg ARTIFACT_FEED=${ARTIFACT_FEED} --build-arg PYPIRC_PATH=${PYPIRC_PATH} --target publisher 
+      - bash: cp $(PYPIRC_PATH) ./PYPIRC
+        displayName: Copy PYPIRC path
+
+      - bash: DOCKER_BUILDKIT=1 docker build --build-arg ARTIFACT_FEED=${ARTIFACT_FEED} --target publisher .
+        displayName: Publish wheels from Docker multistage
+
   {%- elif cookiecutter.publish_in == "ACR"%}
   - job: publish
     variables:
