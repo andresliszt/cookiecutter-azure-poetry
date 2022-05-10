@@ -95,5 +95,10 @@ class Settings(BaseSettings):
     class Config:
         """Inner configuration."""
 
-        env_prefix = "{{cookiecutter.package_name}}_".upper()
+        env_prefix = "{{cookiecutter.package_name|upper}}_"
         use_enum_values = True
+
+def init_settings() -> Settings:
+    """Initilize project settings"""
+    init_dotenv()
+    Settings()
