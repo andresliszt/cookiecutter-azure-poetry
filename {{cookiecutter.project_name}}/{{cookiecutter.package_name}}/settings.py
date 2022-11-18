@@ -101,4 +101,4 @@ class Settings(BaseSettings):
 def init_settings() -> Settings:
     """Initilize project settings"""
     init_dotenv()
-    Settings()
+    return Settings()
